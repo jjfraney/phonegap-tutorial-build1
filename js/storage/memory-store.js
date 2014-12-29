@@ -1,5 +1,4 @@
 var MemoryStore = function(successCallback, errorCallback) {
-    console.log("memory store");
 
     this.findByName = function(searchKey, callback) {
         var employees = this.employees.filter(function(element) {
