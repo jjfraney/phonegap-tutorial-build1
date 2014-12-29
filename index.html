@@ -43,8 +43,10 @@
  
     <script type="text/javascript">
     $( document ).ready(function() {
+        console.log("ready document");
         if (window.location.protocol === 'file:') { alert('your project must be served from a webserver and not from the file system'); }
         // Here is the definition of the uid used by this user and the authentication url used in order to get a token
+        console.log("passed file check");
         var UID_USER = 'caller_uid',
             // If you are using our Java, Ruby or Node.js server-SDK uncomment the following line and replace the placeholder YOUR_AUTH_URL wuth your authentication client url
             //AUTH_URL = 'http://YOUR_AUTH_URL/gettoken?uid=',
@@ -63,8 +65,10 @@
             },
             //Intialize Rtcc Function
             initializeRtcc = function (token) {
+                console.log("inside initialize rtcc")
                 // Initialize the Main Object with App Identifier, Token, RtccType, options
                 rtcc = new Rtcc('ur92aoqbu546', token, 'internal', options);
+                console.log("after Rtcc ctor");
                 // Call if the RtccDriver is not running on the client computer and if the browser is not WebRTC-capable
                 rtcc.onRtccDriverNotStarted = function (downloadUrl) {
                     var answer = confirm('Click OK to download and install the Rtcc client.');
@@ -114,11 +118,13 @@
                 rtcc.initialize();
             },
              getToken = function(uid, callback) {
+                console.log("getting token");
 				$.ajax({
 					url: AUTH_URL + uid,
 					dataType: 'json',
 
 					displayError: function(innerHtml) {
+						console.log("token error" + innerHtml);
                         document.getElementById('error-content').innerHTML = innerHtml;
                         document.getElementById('error').style.display = 'block';
 					},
@@ -144,10 +150,12 @@
             	  });
              },
             init = function () {
+                 console.log("getting token");
                 getToken(UID_USER);
             }
 
         options.useJquery = false;
+        console.log("init");
         init();
 
         $('#buttonCall').click(function(){
