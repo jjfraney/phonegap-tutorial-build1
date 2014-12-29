@@ -3,8 +3,6 @@
 <head>
     <meta charset="utf-8" />
     <title>My Rtcc Application: Caller</title>
-	<script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
-    <script type="text/javascript" src="http://download.rtccloud.net/js/webappid/ur92aoqbu546"></script>
 	<style type="text/css">
     body {
         font-family: Helvetica;
@@ -41,7 +39,10 @@
     If using WebRTC, the call window will be placed in this box with a blue background
     <div id="video-container"></div>
  
+    <script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
+    <script type="text/javascript" src="http://download.rtccloud.net/js/webappid/ur92aoqbu546"></script>
     <script type="text/javascript">
+    console.log("reading script");
     $( document ).ready(function() {
         console.log("ready document");
         if (window.location.protocol === 'file:') { alert('your project must be served from a webserver and not from the file system'); }
