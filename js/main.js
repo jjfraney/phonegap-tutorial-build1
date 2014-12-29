@@ -14,6 +14,7 @@ var app = {
     },
 
     initialize: function() {
+	console.log("init");
         this.store = new MemoryStore();
         $('.search-key').on('keyup', $.proxy(this.findByName, this));
     }
