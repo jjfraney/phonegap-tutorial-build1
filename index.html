@@ -34,6 +34,7 @@
      <h3>Welcome to Rtcc HelloWorld App</h3>
     <h4 id="connecting">Connecting as Caller...</h4>
     <h4 id="stat"></h4>
+    <button style="display:block;" id="buttonLogin">Click to login to sightcall</button>
     <button style="display:none;" id="buttonCall">Click to call Callee</button>
     <h4 id="call"></h4>
     If using WebRTC, the call window will be placed in this box with a blue background
@@ -89,6 +90,8 @@
                         document.getElementById('connecting').style.color = '#CCCCCC';
                         document.getElementById('stat').innerHTML = 'Connected as Caller using ' + realTimeClient;
                         document.getElementById('buttonCall').style.display = 'block';
+                        document.getElementById('buttonLogin').style.display = 'none';
+    
                         break;
                     case 'loggedasotheruser':
                         // force connection, kick other logged users
@@ -156,10 +159,13 @@
             }
 
         options.useJquery = false;
-        console.log("init");
-        init();
 
-        $('#buttonCall').click(function(){
+        $('#buttonLogin').click(function() {
+            console.log("init");
+            init();
+        });
+
+        $('#buttonCall').click(function() {
             rtcc.createCall('callee_uid', 'internal', 'Callee');
         });
     }
